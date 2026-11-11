@@ -138,9 +138,9 @@
 }
 
 .hero__photo--sm {
-  width: 96px;
-  height: 96px;
-  border-radius: 24px;
+  width: 150px;
+  height: 150px;
+  border-radius: 28px;
   margin-bottom: 6px;
 }
 
@@ -251,7 +251,8 @@
 }
 
 .resume-preview {
-  height: 260px;
+  width: 100%;
+  aspect-ratio: 8.5 / 11;
   border-radius: var(--radius-lg);
   background: var(--surface);
   border: 1px solid var(--border);
@@ -501,4 +502,56 @@
   font-size: 13px;
   font-style: italic;
   color: var(--accent-light);
+}
+
+/* ---------- project detail page: minimal spacing + full, uncropped images ---------- */
+
+.main.project-detail {
+  gap: 20px;
+}
+
+.project-detail .section-row {
+  margin-bottom: 10px;
+}
+
+.project-detail .detail-meta {
+  margin: 0 0 4px;
+  gap: 32px;
+}
+
+.project-detail .section h2 {
+  margin-bottom: 10px;
+}
+
+.project-detail .card-list {
+  gap: 8px;
+}
+
+.project-detail .subproject-card {
+  padding: 16px 20px;
+}
+
+.project-detail .feature-list {
+  margin-top: 8px;
+}
+
+.project-detail .feature-list li {
+  margin-bottom: 3px;
+}
+
+.project-detail .skills-line {
+  margin-top: 8px;
+}
+
+.project-detail .detail-image {
+  height: auto;
+  display: block;
+  margin-bottom: 0;
+}
+
+.project-detail .detail-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }

@@ -38,12 +38,14 @@ export default function ProjectDetail() {
   }
 
   return (
-    <div className="main">
+    <div className="main project-detail">
       <div className="section-row">
         <h2 style={{ fontSize: 28 }}>{project.title}</h2>
-        <a href="#" className="btn btn--outline btn--small">
-          See Document
-        </a>
+        {!project.hideSeeDocument && (
+          <a href="#" className="btn btn--outline btn--small">
+            See Document
+          </a>
+        )}
       </div>
 
       <div className="detail-meta">
@@ -51,6 +53,12 @@ export default function ProjectDetail() {
           <strong>Date</strong>
           {project.date}
         </div>
+        {project.course && (
+          <div>
+            <strong>Course</strong>
+            {project.course}
+          </div>
+        )}
       </div>
 
       {imageFailed ? (

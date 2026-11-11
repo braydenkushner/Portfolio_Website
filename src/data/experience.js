@@ -5,6 +5,6 @@ export const experience = [
     role: "Electrical Engineering Intern",
     location: "Monroeville, PA",
     date: "Summer 2026",
-    url: "#", // link to the company's website
+    url: "https://www.bpmionline.com/",
   },
 ];

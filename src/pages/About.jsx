@@ -1,24 +1,42 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { experience } from "../data/experience";
 import { projects } from "../data/projects";
 import { organizations } from "../data/organizations";
 import { skills } from "../data/skills";
-import { honors, certificates } from "../data/honorsAndCertificates";
-import CollapsibleSection from "../components/CollapsibleSection";
 
 export default function About() {
   const [photoFailed, setPhotoFailed] = useState(false);
+  const nameRef = useRef(null);
+  const [photoSize, setPhotoSize] = useState(160);
+
+  // Keep the headshot the same width as the "Brayden Kushner" heading below it.
+  useEffect(() => {
+    const el = nameRef.current;
+    if (!el) return undefined;
+    const update = () => setPhotoSize(el.getBoundingClientRect().width);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="main">
       {/* hero: photo -> name -> role -> bio -> links */}
       <div className="hero">
         {photoFailed ? (
-          <div className="hero__photo">[photo]</div>
+          <div
+            className="hero__photo"
+            style={{ width: photoSize, height: photoSize, borderRadius: photoSize * 0.18 }}
+          >
+            [photo]
+          </div>
         ) : (
           <a href="/images/headshot.jpg" target="_blank" rel="noopener noreferrer">
             <img
               className="hero__photo"
+              style={{ width: photoSize, height: photoSize, borderRadius: photoSize * 0.18 }}
               src="/images/headshot.jpg"
               alt="Brayden Kushner"
               onError={() => setPhotoFailed(true)}
@@ -26,7 +44,7 @@ export default function About() {
           </a>
         )}
         <div>
-          <h1>Brayden Kushner</h1>
+          <h1 ref={nameRef}>Brayden Kushner</h1>
           <div className="hero__role">
             Incoming Analog &amp; Power Electrical Engineer at Raytheon
           </div>
@@ -80,6 +98,8 @@ export default function About() {
             <a
               key={job.company}
               href={job.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="card card--row"
             >
               <div>
@@ -104,11 +124,11 @@ export default function About() {
         <h2>Projects</h2>
         <div className="card-list">
           {projects.map((project) => (
-            <a key={project.id} href={`/projects/${project.id}`} className="card">
+            <Link key={project.id} to={`/projects/${project.id}`} className="card">
               <div className="card__title">{project.title}</div>
               <div className="card__meta">{project.summary}</div>
               <div className="card__date">{project.date}</div>
-            </a>
+            </Link>
           ))}
         </div>
         <div className="section-note">
@@ -134,34 +154,9 @@ export default function About() {
         </div>
       </div>
 
-      {/* honors & awards (hidden/collapsed) */}
-      <CollapsibleSection title="Honors & Awards">
-        {honors.map((h, i) => (
-          <div key={i} className="collapsible__item">
-            <strong>{h.title}</strong> &mdash;{" "}
-            <span style={{ color: "var(--text-dim)" }}>{h.summary}</span>
-          </div>
-        ))}
-      </CollapsibleSection>
-
-      {/* licenses & certificates (hidden/collapsed) */}
-      <CollapsibleSection title="Licenses & Certificates">
-        {certificates.map((c, i) => (
-          <div key={i} className="cert-row">
-            <div className="collapsible__item">
-              <strong>{c.title}</strong> &mdash;{" "}
-              <span style={{ color: "var(--text-dim)" }}>{c.summary}</span>
-            </div>
-            <a href={c.pdfUrl} className="btn btn--outline btn--small">
-              See PDF
-            </a>
-          </div>
-        ))}
-      </CollapsibleSection>
-
-      {/* skills */}
+      {/* skills & interests */}
       <div className="section">
-        <h2>Skills</h2>
+        <h2>Skills and Interests</h2>
         <div className="skills-list">
           {skills.map((row) => (
             <div key={row.category}>

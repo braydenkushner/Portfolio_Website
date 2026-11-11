@@ -32,7 +32,8 @@ export const projects = [
     title: "Computer Organization and Design",
     summary:
       "A three-project CMPSC 473 sequence spanning a custom memory allocator, a bare-metal kernel with paging, and a concurrent channel library.",
-    date: "Spring 2026",
+    date: "Jan 2026 — May 2026",
+    course: "Operating Systems",
     image: "/images/projects/computer-organization-and-design.svg",
     overview:
       "Three systems-level projects completed for CMPSC 473 (Computer Organization and Design), each building a core piece of what an operating system provides — memory management, virtual memory and system calls, and thread synchronization primitives — from the ground up in C. Each project was completed as a two-person team.",
@@ -90,7 +91,8 @@ export const projects = [
     title: "Systems Programming",
     summary:
       "Three C systems-programming tools — a multithreaded TCP chat client, a signal-driven byte histogram, and an ANSI text-highlighting CLI.",
-    date: "[term]",
+    date: "Sep 2025 — Dec 2025",
+    hideSeeDocument: true,
     image: "/images/projects/systems-programming.svg",
     overview:
       "Three independent systems-programming projects in C, each focused on a different piece of the Unix/POSIX toolkit — network sockets and threading, signal handling and low-level I/O, and command-line tool design.",
@@ -168,7 +170,8 @@ export const projects = [
     title: "Karaoke Circuit",
     summary:
       "A fully analog audio processing circuit — vocal removal, tone shaping, and a volume-reactive LED meter — designed, simulated, and soldered onto a custom PCB.",
-    date: "[term]",
+    date: "April 2025",
+    course: "Circuits and Devices",
     image: "/images/projects/karaoke-circuit.png",
     overview:
       "Designed an end-to-end analog signal chain around op-amp building blocks for EE210, moving from hand-derived transfer functions to Multisim simulation to a physical breadboard prototype and finally a soldered printed circuit board. The final product accepts a standard 3.5mm stereo input and provides independent bass/treble and volume controls, a normal/karaoke (vocal-cancellation) toggle, and a 4-LED bar-graph volume meter — all without a single line of firmware.",
@@ -188,7 +191,9 @@ export const projects = [
     title: "School Database",
     summary:
       "A normalized relational database backend for a course-scheduling and registration system, built on Apache Derby.",
-    date: "[term]",
+    date: "April 2025",
+    course: "Object Orientated Programming",
+    hideSeeDocument: true,
     image: "/images/projects/school-database.png",
     overview:
       "Designed and populated a normalized relational schema to model university course scheduling — courses, students, semesters, and the enrollment/scheduling relationships between them — implemented as an embedded Apache Derby database accessed via JDBC for a CMPSC 221 (Data Management) project.",
