@@ -1,0 +1,132 @@
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" font-family="'DejaVu Sans Mono','JetBrains Mono',monospace">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="42%" r="65%">
+      <stop offset="0%" stop-color="#162233"/>
+      <stop offset="55%" stop-color="#0c1017"/>
+      <stop offset="100%" stop-color="#07090d"/>
+    </radialGradient>
+    <linearGradient id="chipBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1b2230"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="dieGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#132032"/>
+      <stop offset="100%" stop-color="#0a0f18"/>
+    </linearGradient>
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e3b34155"/>
+      <stop offset="100%" stop-color="#e3b34100"/>
+    </radialGradient>
+    <pattern id="dotgrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#2a313c"/>
+    </pattern>
+    <marker id="arrowB" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="arrowP" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#bc8cff"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="1000" fill="url(#bgGlow)"/>
+  <rect width="1000" height="1000" fill="url(#dotgrid)" opacity="0.6"/>
+
+  <!-- faint orbiting ring traces (circuit board feel) -->
+  <g fill="none" stroke="#1f2733" stroke-width="2">
+    <circle cx="500" cy="500" r="320"/>
+    <circle cx="500" cy="500" r="245"/>
+  </g>
+
+  <!-- ===== Memory layer: stacked banks, lower-left, receding behind chip ===== -->
+  <g opacity="0.9">
+    <g transform="translate(150,620)">
+      <rect x="0" y="40" width="190" height="46" rx="5" fill="#161b22" stroke="#30363d"/>
+      <rect x="0" y="0" width="190" height="46" rx="5" fill="#1b2230" stroke="#30363d"/>
+      <!-- free/alloc segments -->
+      <rect x="10" y="10" width="34" height="26" fill="#e3b341" opacity="0.8"/>
+      <rect x="48" y="10" width="54" height="26" fill="#7ee787" opacity="0.55"/>
+      <rect x="106" y="10" width="26" height="26" fill="#e3b341" opacity="0.8"/>
+      <rect x="136" y="10" width="44" height="26" fill="#30363d"/>
+      <rect x="10" y="50" width="54" height="26" fill="#7ee787" opacity="0.4"/>
+      <rect x="68" y="50" width="30" height="26" fill="#e3b341" opacity="0.8"/>
+      <rect x="102" y="50" width="78" height="26" fill="#30363d"/>
+    </g>
+  </g>
+
+  <!-- ===== Concurrency layer: thread nodes + channel, right side ===== -->
+  <g opacity="0.95">
+    <circle cx="790" cy="300" r="20" fill="#1c1530" stroke="#bc8cff" stroke-width="2"/>
+    <circle cx="840" cy="360" r="20" fill="#1c1530" stroke="#bc8cff" stroke-width="2"/>
+    <circle cx="790" cy="420" r="20" fill="#1c1530" stroke="#bc8cff" stroke-width="2"/>
+    <path d="M770 310 Q 700 350 660 370" stroke="#bc8cff" stroke-width="2" fill="none" marker-end="url(#arrowP)"/>
+    <path d="M820 365 Q 740 380 680 384" stroke="#bc8cff" stroke-width="2" fill="none" marker-end="url(#arrowP)"/>
+    <path d="M770 412 Q 700 400 660 392" stroke="#bc8cff" stroke-width="2" fill="none" marker-end="url(#arrowP)"/>
+  </g>
+
+  <!-- ===== Central chip (kernel / CPU) ===== -->
+  <g transform="translate(500,500)">
+    <circle r="150" fill="url(#coreGlow)"/>
+
+    <!-- pins -->
+    <g stroke="#3a4350" stroke-width="4">
+      <g id="pinsTop">
+        <line x1="-84" y1="-108" x2="-84" y2="-128"/>
+        <line x1="-42" y1="-108" x2="-42" y2="-128"/>
+        <line x1="0"   y1="-108" x2="0"   y2="-128"/>
+        <line x1="42"  y1="-108" x2="42"  y2="-128"/>
+        <line x1="84"  y1="-108" x2="84"  y2="-128"/>
+      </g>
+      <g id="pinsBottom">
+        <line x1="-84" y1="108" x2="-84" y2="128"/>
+        <line x1="-42" y1="108" x2="-42" y2="128"/>
+        <line x1="0"   y1="108" x2="0"   y2="128"/>
+        <line x1="42"  y1="108" x2="42"  y2="128"/>
+        <line x1="84"  y1="108" x2="84"  y2="128"/>
+      </g>
+      <g id="pinsLeft">
+        <line x1="-108" y1="-84" x2="-128" y2="-84"/>
+        <line x1="-108" y1="-42" x2="-128" y2="-42"/>
+        <line x1="-108" y1="0"   x2="-128" y2="0"/>
+        <line x1="-108" y1="42"  x2="-128" y2="42"/>
+        <line x1="-108" y1="84"  x2="-128" y2="84"/>
+      </g>
+      <g id="pinsRight">
+        <line x1="108" y1="-84" x2="128" y2="-84"/>
+        <line x1="108" y1="-42" x2="128" y2="-42"/>
+        <line x1="108" y1="0"   x2="128" y2="0"/>
+        <line x1="108" y1="42"  x2="128" y2="42"/>
+        <line x1="108" y1="84"  x2="128" y2="84"/>
+      </g>
+    </g>
+
+    <!-- chip body -->
+    <rect x="-110" y="-110" width="220" height="220" rx="14" fill="url(#chipBody)" stroke="#3a4350" stroke-width="2.5"/>
+    <rect x="-94" y="-94" width="188" height="188" rx="8" fill="url(#dieGrad)" stroke="#232a34" stroke-width="1.5"/>
+
+    <!-- etched die pattern: page-table-like nested squares -->
+    <g fill="none" stroke="#58a6ff" stroke-width="1.6" opacity="0.85">
+      <rect x="-70" y="-70" width="140" height="140" rx="4"/>
+      <rect x="-50" y="-50" width="100" height="100" rx="3"/>
+      <rect x="-30" y="-30" width="60" height="60" rx="2"/>
+    </g>
+    <g stroke="#e3b341" stroke-width="1.4" opacity="0.8">
+      <line x1="-70" y1="-35" x2="-30" y2="-35"/>
+      <line x1="-70" y1="0"   x2="-30" y2="0"/>
+      <line x1="-70" y1="35"  x2="-30" y2="35"/>
+      <line x1="35" y1="-35" x2="70" y2="-35"/>
+      <line x1="35" y1="0"   x2="70" y2="0"/>
+      <line x1="35" y1="35"  x2="70" y2="35"/>
+    </g>
+
+    <!-- core -->
+    <rect x="-16" y="-16" width="32" height="32" rx="4" fill="#e3b341"/>
+    <circle r="3" fill="#0d1117"/>
+  </g>
+
+  <!-- connecting traces from memory + concurrency into the chip -->
+  <g fill="none" stroke="#7ee787" stroke-width="2.2" opacity="0.8">
+    <path d="M330 650 Q 400 560 392 500" marker-end="url(#arrowB)"/>
+  </g>
+
+</svg>
