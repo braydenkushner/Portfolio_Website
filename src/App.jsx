@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 import Projects from "./pages/Projects";
 import About from "./pages/About";
 import ProjectDetail from "./pages/ProjectDetail";
@@ -9,6 +10,7 @@ import "./App.css";
 export default function App() {
   return (
     <div className="page">
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Projects />} />

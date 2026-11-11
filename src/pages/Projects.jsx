@@ -82,10 +82,6 @@ export default function Projects() {
           </Link>
         ))}
       </div>
-      <div className="section-note" style={{ textAlign: "center" }}>
-        grid repeats this template card for however many projects there are —
-        add entries in src/data/projects.js
-      </div>
     </div>
   );
 }

@@ -10,11 +10,13 @@ export default function About() {
   const nameRef = useRef(null);
   const [photoSize, setPhotoSize] = useState(160);
 
-  // Keep the headshot the same width as the "Brayden Kushner" heading below it.
+  // Keep the headshot close to the width of the "Brayden Kushner" heading
+  // below it (slightly smaller than a 1:1 match).
+  const PHOTO_SCALE = 0.82;
   useEffect(() => {
     const el = nameRef.current;
     if (!el) return undefined;
-    const update = () => setPhotoSize(el.getBoundingClientRect().width);
+    const update = () => setPhotoSize(el.getBoundingClientRect().width * PHOTO_SCALE);
     update();
     const observer = new ResizeObserver(update);
     observer.observe(el);
@@ -114,9 +116,6 @@ export default function About() {
             </a>
           ))}
         </div>
-        <div className="section-note">
-          template card, repeats per role — add entries in src/data/experience.js
-        </div>
       </div>
 
       {/* projects */}
@@ -131,9 +130,6 @@ export default function About() {
             </Link>
           ))}
         </div>
-        <div className="section-note">
-          template card, repeats per project — add entries in src/data/projects.js
-        </div>
       </div>
 
       {/* organizations & activities */}
@@ -143,12 +139,18 @@ export default function About() {
           {organizations.map((org) => (
             <div key={org.title} className="card">
               <div className="card__title">{org.title}</div>
-              <div className="card__meta">
-                {org.role} &middot; {org.date}
-              </div>
-              <div className="card__meta" style={{ marginTop: 8 }}>
-                {org.summary}
-              </div>
+              {org.roles.map((r, i) => (
+                <div key={r.role} style={{ marginTop: i === 0 ? 8 : 18 }}>
+                  <div className="card__meta">
+                    {r.role} &middot; {r.date}
+                  </div>
+                  <ul className="feature-list" style={{ marginTop: 6 }}>
+                    {r.bullets.map((bullet, j) => (
+                      <li key={j}>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           ))}
         </div>
